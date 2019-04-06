@@ -23,6 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+//$config['base_url'] = '';
 $config['base_url'] = 'http://ec2-3-16-89-162.us-east-2.compute.amazonaws.com/';
 
 /*
@@ -35,7 +36,8 @@ $config['base_url'] = 'http://ec2-3-16-89-162.us-east-2.compute.amazonaws.com/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+//$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +54,7 @@ $config['index_page'] = 'index.php';
 |
 | WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
 */
+//$config['uri_protocol']	= 'AUTO';
 $config['uri_protocol']	= 'REQUEST_URI';
 
 /*
