@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/CodeIgniter/index.php';
+$config['base_url'] = 'http://ec2-3-16-89-162.us-east-2.compute.amazonaws.com/';
 
 /*
 |--------------------------------------------------------------------------
