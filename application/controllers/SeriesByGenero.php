@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require APPPATH . 'libraries/REST_Controller.php';
 require APPPATH . 'libraries/Format.php';
 
-class Series extends REST_Controller {
+class SeriesByGenero extends REST_Controller {
 
 
     function __construct()
@@ -28,38 +28,23 @@ class Series extends REST_Controller {
         $this->methods['users_delete']['limit'] = 50;
     }
 
-    public function index_get(){
-        //Dados Recebidos via POST
-        $post_data = json_decode(file_get_contents('php://input'));
-
-        $this->load->model('Serie_Model', 'serie');
-        $query = $this->db->get('serie');
-        //debug($query->result(),1);
-        $this->response($query->result(),REST_Controller::HTTP_OK);
-
-    }
+    
 
     public function index_post(){
 
         $post_data = json_decode(file_get_contents('php://input'));
+        //debug($post_data,1);
+
+        $this->load->model('Serie_Model', 'series');
+
         $data = array(
-            'nome'      => $post_data->name,
-            'cd_genero' => $post_data->genre,
-            'cd_status' => $post_data->status,
-            'imagem' => $post_data->imagem
+            'cd_genero' => $post_data->cd_genero,
         );
 
-        $response = $this->db->insert('serie', $data);
-        $id_serie = $this->db->insert_id();
 
-        $data_comment = array(
 
-            'cd_serie' => $id_serie ,
-            'comentario' => $post_data->comments
-        );
-
-        $response = $this->db->insert('comentario', $data_comment);
-        
+        //debug($data,1);
+        $response = $this->series->filter($data);
         $this->response($response,REST_Controller::HTTP_OK);
 
 
